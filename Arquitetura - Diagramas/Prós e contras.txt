@@ -1,0 +1,15 @@
+Vantagens:
+
+- elimina o problema da linguagem... já que o rest comunica com qualquer aplicação frontend.
+- produz um ambiente onde o desenvolvedor não precisa fazer host da sua aplicação ( pode ser criado um frontend offline que consome o serviço web)
+- O pesquisador pode usufruir dos dados e realizar analises em qualquer linguagem... (Assim como os repositórios como o kaggle ou uci são muito utilizados para fins acadêmicos o nosso repositório pode ser utilizado para ciência e ambiente empresarial)
+- Caso outros alunos queiram explorar novos diagnosticos, eles podem utilizar o ambiente e disponibiliza-los (em qualquer linguagem)... projetos de TCC seriam otimos pra isso.
+
+Desvantagens:
+
+- O servidor rest teria que ser adaptado para tudo isso. O servidor do joão faz apenas uma parte desse serviço
+- A aplicação criada pelo joão de front-end ainda funcionaria, no entanto eu gostaria de usar outra linguagem para construir a zona do pesquisador.
+- Seria necessário criar um ambiente com documentação bastante detalhada de como usar a API (isso dá muito trabalho...)
+- Essa arquitetura envolve 1 servidor rest, 1 aplicação de "área de pesquisador", 1 aplicação para validação dos diagnósticos. (são várias aplicações)
+
+

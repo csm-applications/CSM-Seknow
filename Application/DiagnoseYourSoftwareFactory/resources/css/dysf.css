@@ -1,0 +1,62 @@
+.application-background{
+    background-color: #d1e1f0;
+    width: 100%;
+    height: 90vh;
+}
+
+.center{
+    text-align: center;
+}
+
+.employee-frame{
+    background-color: #e8f5ff;
+    border-radius: 5px 5px 5px 5px;
+    padding:15px;
+    margin: 15px;
+}
+
+.header-titles{
+    background-color: #2161ff; 
+    color: #fff; 
+    text-align: center;
+}
+
+.header-tables{
+    background-color: #f2faff; text-align: center;
+
+}
+
+.header-subtitles{
+    background-color: #59bfff;
+    color:#fff;
+    text-align: center;
+}
+
+.app-body{
+    margin: 2%;
+}
+
+.list-view{
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding: 2%;
+    background-color: #fff;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.questionWrapper{
+    background-color: #f8f9fa;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 3px 3px 3px 3px;
+
+}
+
+.sectionsBox{
+    background-color: #efefef;
+    padding:30px;
+}
+
+.container-color{
+    background-color: rgba(244,244,244,0.8);
+}

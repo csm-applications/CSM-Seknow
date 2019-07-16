@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="GCEval">
+    <class>br.com.GCEval.model.Answer</class>
+    <class>br.com.GCEval.model.Answerdata</class>
+    <class>br.com.GCEval.model.Company</class>
+    <class>br.com.GCEval.model.Diagnostic</class>
+    <class>br.com.GCEval.model.Group</class>
+    <class>br.com.GCEval.model.Groupofanswer</class>
+    <class>br.com.GCEval.model.Permission</class>
+    <class>br.com.GCEval.model.Question</class>
+    <class>br.com.GCEval.model.Section</class>
+    <class>br.com.GCEval.model.Useraccount</class>
+    <class>br.com.GCEval.model.Usertype</class>
+    <class>br.com.GCEval.model.Grouping</class>
+  </persistence-unit>
+</persistence>
