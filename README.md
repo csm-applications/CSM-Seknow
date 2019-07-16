@@ -15,15 +15,15 @@ https://www.youtube.com/watch?v=yh_Ypdkq3pw&t
 
 This tool was built using the following technologies:
 Server:
-*Java 1.8 (web)
-*Maven
-*Springboot
+* Java 1.8 (web)
+* Maven
+* Springboot
 
 Client:
 
-*PHP 7.1
-*Apache server
-*Bootstrap
+* PHP 7.1
+* Apache server
+* Bootstrap
 
 ### Step 01: Setting up the database 
 
