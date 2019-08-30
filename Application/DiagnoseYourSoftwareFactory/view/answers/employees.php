@@ -13,7 +13,7 @@ $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies
 <body class="application-background" >
     <div class="container-color container" style="padding: 1%;">
         <h3 class="header-titles alert alert-info ">Employees Answers</h3>
-        <div style="padding: 30px">Here you, the manager, can review the answers given by employees and seek to improve their view on knowledge management according to the perception of their employees.</div>
+        <div style="text-align: center; padding: 30px">Here you, the manager, can review the answers given by employees and seek to improve their view on knowledge management according to the perception of their employees.</div>
 
         <?php if (!empty($myCompanies)) { ?>
             <div class="questionWrapper">
@@ -23,18 +23,18 @@ $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies
                     <?php
                     $employees = json_decode(CallAPI("GET", "http://localhost:8080/companies/employees/" . $company['idCompany']), true);
                     if (empty($employees)) {
-                        echo("<div class='alert alert-danger'>Não existe nenhum funcionário atribuído a essa empresa</div>");
+                        echo("<div class='alert alert-danger'>No employees assigned to this company</div>");
                     }
                     foreach ($employees as $employee) {
                         ?>
                         <div class="employee-frame">
-                            <h5 class="alert alert-info" style="background-color: #fff;margin: 20px">
+                            <h5 class="alert alert-info" >
                                 <img src="../../resources/images/svg/si-glyph-person.svg" width="24" height="24"/>
                                 <?= $employee['nome'] ?>
                             </h5>
                             <?php $answerData = json_decode(CallAPI("GET", "http://localhost:8080/data/fromuser/" . $employee['idUserAccount']), true);
                             ?>
-                            <table class="table table-hover table-bordered">
+                            <table class="table table-hover table-bordered" style="background-color: #fff;">
                                 <tr class="header-tables">
                                     <th>Questions</th>
                                     <th>Answer</th>
@@ -43,7 +43,7 @@ $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies
                                 <?php foreach ($answerData as $ans) { ?>
                                     <tr>
                                         <td><?= $ans['question']['question'] ?></td>
-                                        <td><?= $ans['answer']['answer'] ?></td>
+                                        <td class="center"><?= $ans['answer']['answer'] ?></td>
                                         <td> <?= $ans['section']['name'] ?> </td>
 
                                     </tr>
@@ -57,7 +57,7 @@ $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies
                 ?>
             </div>
         <?php }else{
-            echo('<div class="alert alert-danger"> Você não possui nenhuma empresa cadastrada </div>');
+            echo('<div class="alert alert-danger"> You don\'t have any registered companies </div>');
         } ?>
     </div>
 </body>

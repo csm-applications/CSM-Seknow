@@ -50,10 +50,9 @@ if (isset($_POST['action']) && $_POST['action'] == "saveAnswers") {
         } else {
             header('location: ../dashboards/user.php?message=Respostas cadastradas com sucesso!');
         }
-    }else{
-         header("location: qa.php?diagnostic=" . $diagnostic['idquestionnaire'] . "&section=" . isset($_GET['section']) ? $_GET['section'] : 0 );
+    } else {
+        header("location: qa.php?diagnostic=" . $diagnostic['idquestionnaire'] . "&section=" . isset($_GET['section']) ? $_GET['section'] : 0 );
     }
-   
 }
 ?>
 
@@ -67,11 +66,17 @@ if (isset($_POST['action']) && $_POST['action'] == "saveAnswers") {
         ?>
 
         <h3 class="header-titles alert"><?= $diagnostic['name'] ?></h3>
-        <p style="padding:3%;"><?= $diagnostic['description'] ?></p>
+        <p style="padding:10px; text-align: center"><?= $diagnostic['description'] ?></p>
 
         <div style="text-align: center;">
-            <?php for ($n = 0; $n < sizeof($sections); $n++) { ?>
-                <a class="col-md-2" style="margin:1px; width: 100%;" href="qa.php?diagnostic=<?= $diagnostic['idquestionnaire'] ?>&section=<?= $n ?>" ><?= $sections[$n]['name'] ?></a>
+            <?php for ($n = 0; $n < sizeof($sections); $n++) {
+                $answered = "btn-success";
+                if($_GET['section'] < $n){
+                    $answered = "btn-primary";
+                }
+                ?>
+                <br/>
+                <a class="btn <?= $answered?>" style=" width: 500px; margin-bottom:10px; " href="qa.php?diagnostic=<?= $diagnostic['idquestionnaire'] ?>&section=<?= $n ?>" ><?= $sections[$n]['name'] ?></a>
             <?php } ?>
         </div>
         <div class="sectionsBox" >
@@ -90,7 +95,7 @@ if (isset($_POST['action']) && $_POST['action'] == "saveAnswers") {
                     ?>
 
                     <div class="card">
-                        <a class="btn btn-link" data-toggle="collapse" data-target="#collapse<?= $section['idSection'] ?>" aria-expanded="true" aria-controls="collapse<?= $section['idSection'] ?>">
+                        <a class="btn btn-link header-titles" style="color: #fff;" data-toggle="collapse" data-target="#collapse<?= $section['idSection'] ?>" aria-expanded="true" aria-controls="collapse<?= $section['idSection'] ?>">
                             <div class="card-header" id="heading<?= $section['idSection'] ?>">
                                 <h5 class="mb-0">
                                     <?= $section['name'] ?>
@@ -99,18 +104,22 @@ if (isset($_POST['action']) && $_POST['action'] == "saveAnswers") {
                         </a>
 
                         <div id="collapse<?= $section['idSection'] ?>" class="collapse show" aria-labelledby="heading<?= $section['idSection'] ?>" data-parent="#accordion">
+
                             <div class="card-body">
                                 <?php
                                 $questions = $section['questionList'];
+                                $i = 0;
                                 foreach ($questions as $question) {
+                                    $i++;
                                     ?>
                                     <div class="questionWrapper">
-                                        <p><?= $question['question'] ?></p>
+                                        <p><?= $i . ") " . $question['question'] ?></p>
                                         <?php
                                         $groupofanswer = $question['groupofanswerList'];
                                         foreach ($groupofanswer[0]['answerList'] as $answer) {
                                             ?>
                                             <input  type="radio" required="true" name="<?php echo($question['idQuestion']); ?>" value="<?php echo($answer['idAnswer']); ?>"> <?php echo($answer['answer']); ?> 
+                                            <br/>
                                         <?php } ?>
                                     </div>
                                     <?php
@@ -122,7 +131,7 @@ if (isset($_POST['action']) && $_POST['action'] == "saveAnswers") {
 
 
                 </div>
-                <input style="margin-bottom: 20px; background-color: #021f9a" type="submit" value="Salvar diagnóstico" class="btn btn-success form-control"/>
+                <input style="margin-bottom: 20px; background-color: #021f9a" type="submit" value="Save diagnostic" class="btn btn-success form-control"/>
             </form>
 
         </div>

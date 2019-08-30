@@ -36,22 +36,20 @@ if (isset($_POST['action']) && $_POST['action'] == 'admitUser') {
 
 <body class="application-background" >
     <div class="container-color container" style="padding: 1%;">
-        <h3 class="header-titles alert">Convidar funcionários</h3>
-        <div style="padding:3%;">Aqui você, gestor, poderá realizar convidar seus colaboradores a se cadastrar no nossa ferramenta 
-            e realizar os diagnósticos disponíveis.</div>
-
+        <h3 class="header-titles alert">Invite employees</h3>
+       
         <?php if ($showListOfYourEmployees) { ?>
 
             <div class="jumbotron">
-                <h3 class="alert alert-dark">Seus funcionários</h3>
+                <h3 class="alert alert-dark">Your employees</h3>
                 <div style="padding:20px;">
                     <table class="table table-hover table-bordered">
                         <tr>
-                            <th>Nome do Funcionário</th>
+                            <th>Employee Name</th>
                             <th>Email</th>
-                            <th>Telefone</th>
-                            <th>Empresa</th>
-                            <th>Ações</th>
+                            <th>Phone</th>
+                            <th>Company</th>
+                            <th>Actions</th>
                         </tr>
                         <?php foreach ($yourEmployees as $emp) { ?>
                             <tr>
@@ -74,12 +72,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'admitUser') {
 
         <?php } ?>
         <div class="jumbotron">
-            <h3 class="alert alert-dark">Todos usuários</h3>
+            <h3 class="alert alert-dark">All users</h3>
             <form action="employees.php" method="GET">
                 <input type="hidden" name="toHire" value="<?= $_GET['toHire'] ?>"/>
                 <div class="row">
                     <div class="col-md-10">
-                        <input class="form-control" placeholder="Digite um nome para filtrar" name="filter"/>
+                        <input class="form-control" placeholder="Type a name to filter" name="filter"/>
                     </div>
                     <div class="col-md-2">
                         <input class="btn btn-primary" type="submit" value="search"/>
@@ -89,11 +87,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'admitUser') {
             <div style="padding:20px;">
                 <table class="table table-hover table-bordered">
                     <tr>
-                        <th>Nome do Funcionário</th>
+                        <th>Employee name</th>
                         <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Empresa</th>
-                        <th>Ações</th>
+                        <th>Phone</th>
+                        <th>Company</th>
+                        <th>Actions</th>
                     </tr>
                     <?php foreach ($allUsers as $emp) { ?>
                         <tr>
@@ -114,13 +112,105 @@ if (isset($_POST['action']) && $_POST['action'] == 'admitUser') {
             </div>
         </div>
 
+        <?php
+        if (isset($_POST['sendMail']) && $_POST['sendMail'] == 'true') {
 
-        <div class="jumbotron alert-warning" style="margin: 20px">
-            <div>Para cadastrar um novo funcionário na sua empresa envie o seguinte link para seu funcionário:</div>
-            <a href="http://localhost/DiagnoseYourSoftwareFactory/view/registration/user.php?toHire=<?= $_GET['toHire'] ?>"> 
-                http://localhost/DiagnoseYourSoftwareFactory/view/registration/user.php?toHire=<?= $_GET['toHire'] ?>
-            </a>
+            $name = $_POST['name'];
+            $to = $_POST['email'];
+            $message = $_POST['message'];
+            if (isset($_GET['toHire']))
+                $toHire = $_GET['toHire'];
+
+            require '../../PHPmailer/PHPMailer.php';
+            require '../../PHPmailer/SMTP.php';
+            require '../../PHPmailer/Exception.php';
+
+
+            $mail = new PHPMailer\PHPMailer\PHPMailer;
+            $subject = "[SEKNOW] " . $name . " Invitation for you!";
+            $content = "<b>Hello " . $name . "!.</b>"
+                    . "<p>Boss message: $message</p>"
+                    . "<p> You were invitated to join SEKNOW and diagnose the knowledge management actions adopted in your company.</p>"
+                    . "<p> click on <a href='http://localhost/DiagnoseYourSoftwareFactory/view/registration/user.php?toHire=$toHire'> this link </a> to sign up</p>";
+            $mail->IsSMTP();
+            $mail->charSet = "UTF-8";
+            $mail->Encoding = 'base64';
+            $mail->SMTPDebug = 0;
+            $mail->SMTPAuth = TRUE;
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587;
+            $mail->Username = "contato.csmaster@gmail.com";
+            $mail->Password = "vinnystos90";
+            $mail->Host = "smtp.gmail.com";
+            $mail->Mailer = "smtp";
+            $mail->SetFrom("contato.csmaster@gmail.com", "Seknow");
+            $mail->AddReplyTo("contato.csmaster@gmail.com", "Seknow");
+            $mail->AddAddress($to);
+            $mail->Subject = $subject;
+            $mail->WordWrap = 80;
+            $mail->MsgHTML($content);
+            $mail->IsHTML(true);
+
+            if (!$mail->Send()) {
+                $msge = "<div class='alert alert-danger'>Failed sending mail!</div>";
+            } else {
+                $msge = "<div class='alett alert-sucess'>Mail sent</div>";
+                echo $msge;
+            }
+        }
+        ?>
+        <div class = "jumbotron " style = "margin: 20px">
+            <h2 class="header-subtitles">E-mail invitation</h2>
+            <div >
+                <form action="employees.php?toHire=<?=$_GET['toHire']?>" method="POST">
+
+                    <h5>Please fill in your employee information.</h5>
+                    <div style="margin:15px"> You can invite your employees to participate in the diagnostic management system via email. By completing the form below an email will be sent to your employee containing a link. When the employee makes his registration will be already part of your company.</div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Name"/>
+                        <input class="form-control" type="text" name="email" placeholder="E-mail"/>
+                        <textarea class="form-control" name="message" placeholder="Type a frendly message to your employee"></textarea>
+                        <input type="hidden" name="sendMail" value="true"/>
+                    </div>
+                    <input class="btn btn-primary form-control" type="submit" value="Send invitation"/>
+
+                </form>
+            </div>
         </div>
+
+
+
+
+
+
+        <div class = "jumbotron " style = "margin: 20px">
+            <h2 class="header-subtitles">Link sharing</h2>
+            <div style="margin:15px">To invite an employee send the following link:</div>
+            <div class="row">
+                <input id="urlInput" class="form-control col-md-10" type="text" value="http://localhost/DiagnoseYourSoftwareFactory/view/registration/user.php?toHire=<?= $_GET['toHire'] ?>"/>
+                <button class="btn btn-primary col-md-2" onclick="myFunction()">Copy text</button>
+            </div>
+        </div>
+
+        <script>
+            function myFunction() {
+                /* Get the text field */
+                var copyText = document.getElementById("urlInput");
+
+                /* Select the text field */
+                copyText.select();
+
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+
+                /* Alert the copied text */
+                alert("Copied the text: " + copyText.value);
+            }
+        </script>
+
+
+
+
     </div>
 </body>
 

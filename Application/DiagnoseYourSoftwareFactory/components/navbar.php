@@ -7,41 +7,45 @@
             <?php
             if ($_SESSION['user_type'] == "Manager") {
                 echo('<li class="nav-item active">
-                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/dashboards/manager.php"> Início </a>
+                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/dashboards/manager.php"> Home </a>
+                </li>');
+            } else if (isset($_SESSION['grouping']) && $_SESSION['grouping'] == "researcher") {
+                echo('<li class="nav-item active">
+                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/dashboards/researcher.php"> Home </a>
                 </li>');
             } else {
                 echo('<li class="nav-item active">
-                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/dashboards/user.php"> Início </a>
+                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/dashboards/user.php"> Home </a>
                 </li>');
             }
             ?>
             <?php
             if ($_SESSION['user_type'] == "Manager") {
                 echo('<li class="nav-item active">
-                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/reports/manager.php"> Relatórios </a>
+                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/reports/manager.php"> Reports </a>
                 </li>');
             }
             ?>
             <li class="nav-item active">
-                <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/answers/user.php"> Respostas </a>
+                <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/answers/user.php"> Answers </a>
             </li>
             <?php
             if ($_SESSION['user_type'] == "Manager") {
                 echo('<li class="nav-item active">
-                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/answers/employees.php"> Funcionários</a>
+                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/answers/employees.php"> Employees</a>
                 </li>');
 
                 echo('<li class="nav-item active">
-                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/registration/company.php"> Empresas </a>
+                    <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/registration/company.php"> Companies </a>
                 </li>');
             }
             ?>
             <li class="nav-item active">
-                <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/contato.php"> Contato </a>
+                <a class="nav-link" href="/DiagnoseYourSoftwareFactory/view/contato.php"> Contact </a>
             </li>
         </ul>
         <?php
-        echo('<span style="color:#fff; margin-right:10px;">Olá, ' . $_SESSION['logged_user'] . '</span>');
+        echo('<span style="color:#fff; margin-right:10px;">Hello, ' . $_SESSION['logged_user'] . '</span>');
         if (isset($_POST['action']) && $_POST['action'] == "logout") {
             session_destroy();
             header("location: /DiagnoseYourSoftwareFactory/index.php");

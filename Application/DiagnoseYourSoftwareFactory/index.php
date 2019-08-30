@@ -12,20 +12,23 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     session_start();
     $toCompare = json_decode(CallAPI("GET", "http://localhost:8080/users/findbyemail/" . $_POST['email']), true);
     if ($_POST['email'] == null || $_POST['password'] == null) {
-        header("location: index.php?message=Informe o usuário e senha");
+        header("location: index.php?message=Inform the user and password");
     } else {
 
         if (isset($toCompare['email']) && $toCompare['password'] == $_POST['password']) {
+            var_dump($toCompare);
             $_SESSION['logged_user'] = $toCompare['email'];
             $_SESSION['id_logged_user'] = $toCompare['idUserAccount'];
+            $_SESSION['idCompany'] = $toCompare['companyId']['idCompany'];
             $_SESSION['user_type'] = $toCompare['userType']['name'];
-            if ($toCompare['usertype']['name'] == 'Manager') {
+            $_SESSION['grouping'] = $toCompare['grouping']['name'];
+            if ($toCompare['userType']['name'] == 'Manager') {
                 header("location: view/dashboards/manager.php");
             }else{
                 header("location: view/dashboards/user.php");
             }
         } else {
-            header("location: index.php?message=Usuário ou senha incorreta!");
+            header("location: index.php?message=Wrong User or Password!");
         }
     }
 }
@@ -42,10 +45,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                             <div class="card text-white bg-primary py-5 register">
                                 <div class="card-body text-center">
                                     <div>
-                                        <h2>Cadastrar</h2>
-                                        <p>Faça o diagnóstico de conhecimento de sua empresa!</p>
+                                        <h2>Sign up</h2>
+                                        <p>Make the knowledge diagnosis of your company!</p>
                                         <a href="view/registration/user.php" class="btn btn-primary active mt-5" >
-                                            Cadastre agora!
+                                            Sign up now
                                         </a>
                                     </div>
                                 </div>
@@ -59,7 +62,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                     ?>
                                     <form action="index.php" method="POST">
                                         <h1>Login</h1>
-                                        <p class="text-muted">Entrar em sua conta</p>
+                                        <p class="text-muted">Sign in</p>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
@@ -74,11 +77,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                                                     <img src="resources/images/svg/si-glyph-lock-unlock.svg" style="width: 16px; height: 16px;" /> 
                                                 </span>
                                             </div>
-                                            <input type="password" class="form-control" placeholder="Senha" name="password" >
+                                            <input type="password" class="form-control" placeholder="Password" name="password" >
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
-                                                <input type="submit" class="btn btn-primary px-4"  value="Entrar">
+                                                <input type="submit" class="btn btn-primary px-4"  value="Sign in">
                                             </div>
                                         </div>
                                     </form>

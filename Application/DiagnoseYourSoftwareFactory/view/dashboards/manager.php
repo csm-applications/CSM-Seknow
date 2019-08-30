@@ -10,6 +10,19 @@ require_once '../../api/CallAPI.php';
 $diagnosticos = json_decode(CallAPI("GET", "http://localhost:8080/diagnostics"), true);
 $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies/" . $_SESSION['id_logged_user']), true);
 $showListOfCompanies = true;
+
+if (isset($_POST['revokeAction']) && $_POST['revokeAction'] != null && $_POST['revokeAction'] == 'revoke') {
+    $companyToRevoke = $_POST['companyid'];
+    $diagnosticToRevoke = $_POST['diagnosticid'];
+
+    $toRevoke = Array();
+    array_push($toRevoke, $diagnosticToRevoke);
+    array_push($toRevoke, $companyToRevoke);
+
+    CallAPI("PUT", "http://localhost:8080/companies/revoke/", json_encode($toRevoke));
+
+    header("Location: ../dashboards/manager.php");
+}
 ?>
 <body class="application-background">
     <div class="container container-color" style='padding:20px'>
@@ -20,61 +33,69 @@ $showListOfCompanies = true;
         ?>
         <?php
         if (is_array($myCompanies) && isset($myCompanies['status']) && $myCompanies['status'] == '404') {
-            echo("<div style='margin:20px' class='alert alert-info'>Você não possui nenhuma empresa registrada</div>");
+            echo("<div style='margin:20px' class='alert alert-info'>You don't have any companies registered</div>");
             $showListOfCompanies = false;
         }
         ?>
 
         <div class="row" style="margin: 20px;">
-            <div class="col-md-12" style="text-align: center; padding: 20px">
-                <h4 class="col-md-12" style="text-align: center">Diagnósticos disponibilizados para suas empresas</h4>
-                <small> Você encontra aqui os dignósticos disponiveis a suas empresas. Você pode encerrar o acesso a qualquer momento.</small>
+            <div class="header-titles col-md-12" style="text-align: center; padding: 20px; margin-bottom: 20px">
+                <h4 class="col-md-12 header-titles" style="text-align: center">Diagnostics made available to your companies</h4>
+                <div> Here you will find the dignostics available to your companies. You can terminate access at any time.</div>
             </div>
-            <table class="table table-bordered table-hover table-striped" style="text-align: center">
+            <table class="table table-bordered table-hover table-striped" style="text-align: center; background-color: #fff; color: #3b5b85">
                 <tr>
-                    <th>Diagnóstico</th>
-                    <th>Data de início</th>
-                    <th>Data de término</th>
-                    <th>Empresa</th>
-                    <th>Ações</th>
+                    <th>Diagnostic</th>
+                    <th>Company</th>
+                    <th>Actions</th>
                 </tr>
-                <tr>
-                    <td>Buckowits & Williams</td>
-                    <td> 10/02/2019 </td>
-                    <td> 10/04/2019 </td>
-                    <td>X-brain</td>
-                    <td><a href="" class="btn btn-danger"> <span><img width="18" height="18" src="../../resources/images/svg/si-glyph-deny.svg"</span> Encerrar </a></td>
-                </tr>
-                <tr>
-                    <td>Diagnostic of Software Industries</td>
-                    <td> 16/04/2019 </td>
-                    <td> 10/07/2019 </td>
-                    <td>X-code</td>
-                    <td><a href="../reports/manager.php?company=34" class="btn btn-danger"> <span><img width="18" height="18" src="../../resources/images/svg/si-glyph-deny.svg"</span> Encerrar </a></td>
-                </tr>
+                <?php
+                foreach ($myCompanies as $company) {
+                    $diagnostics = $company['diagnosticList'];
+                    foreach ($diagnostics as $diagnostic) {
+                        ?>
+                        <form action="manager.php" method="POST">
+
+                            <tr>
+                                <td><?= $company['name'] ?></td>
+                                <td><?= $diagnostic['name'] ?></td>
+                            <input type="hidden" name="revokeAction" value="revoke"/>
+                            <input type="hidden" name='diagnosticid' value="<?= $diagnostic['idquestionnaire'] ?>"/>
+                            <input type="hidden" name='companyid' value="<?= $company['idCompany'] ?>"/>
+                            <td><input type="submit" class="btn btn-danger" value="Revoke"/> </td>
+                            </tr>
+                        </form>
+                        <?php
+                    }
+                }
+                ?>
             </table>
         </div>
-        <div class="col-md-12" style="text-align: center;padding: 20px">
-            <h4 >Diagnósticos cadastrados</h4>
-            <small>Selecione aqui os diagnósticos que você deseja disponibilizar a sua empresa. Você será redirecionado para a página de disponibilização.</small>
+        <div class="header-titles col-md-12" style="text-align: center;padding: 20px">
+            <h4 class="">Registered Diagnostics</h4>
+            <div>Select here the diagnostics you wish to make available to your company. You will be redirected to the availability page.</div>
         </div>
         <div class="row" style="padding:10px">
-            <?php foreach ($diagnosticos as $diag) { ?>
-                <a style="text-decoration: none;" href="../diagnostics/qa.php?diagnostic=<?= $diag['idquestionnaire'] ?>">
-                    <div class="list-view">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="../../resources/images/survey.png" width="200" height="200"/>
-                            </div>
-                            <div class="col-md-8">
-                                <h3 class="header-subtitles alert"><?php echo($diag['name']) ?></h3>
-                                <p><?php echo($diag['description']) ?></p>
-                                <a href="../../view/diagnostics/provide.php" class="btn btn-success"> Disponibilizar </a>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            <?php } ?>
+            <table class="table table-bordered table-hover table-striped" style="text-align: center; background-color: #fff; color: #3b5b85">
+                <tr>
+                    <th>Diagnostic</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                <?php foreach ($diagnosticos as $diag) { ?>
+
+                        <tr>
+                            <td style="width: 30%"><?= $diag['name'] ?></td>
+                            <td style="width: 50%"><?= $diag['description'] ?></td>
+                        <input type="hidden" name="revokeAction" value="revoke"/>
+                        <input type="hidden" name='diagnosticid' value="<?= $diag['idquestionnaire'] ?>"/>
+                        <input type="hidden" name='companyid' value="<?= $company['idCompany'] ?>"/>
+                        <td><a href="../../view/diagnostics/provide.php?toProvide=<?= $diag['idquestionnaire'] ?>" class="btn btn-success"> Provide </a> </td>
+                        </tr>
+
+                <?php } ?>
+
+            </table>
         </div>
 </body>
 

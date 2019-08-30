@@ -9,7 +9,6 @@
 }
 
 .employee-frame{
-    background-color: #e8f5ff;
     border-radius: 5px 5px 5px 5px;
     padding:15px;
     margin: 15px;
@@ -19,6 +18,7 @@
     background-color: #2161ff; 
     color: #fff; 
     text-align: center;
+    font-weight: bold;
 }
 
 .header-tables{
@@ -30,6 +30,8 @@
     background-color: #59bfff;
     color:#fff;
     text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .app-body{

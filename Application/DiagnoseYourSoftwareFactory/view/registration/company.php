@@ -80,8 +80,8 @@ require_once '../../components/navbar.php';
                     <div class="col-md-6">
                         <div class="card mx-4">
                             <div class="card-body p-4">
-                                <h3 class="header-titles alert alert-info"  >Cadastro de Empresa</h3>
-                                <p class="text-muted">Cadastre aqui sua empresa</p>
+                                <h3 class="header-titles alert alert-info"  >Company Registration</h3>
+                                <p class="text-muted center">Register your company</p>
                                 <form action="company.php" method="POST">
                                     <?php
                                     if (!$edit) {
@@ -92,14 +92,14 @@ require_once '../../components/navbar.php';
                                     }
                                     ?>
                                     <fieldset>
-                                        <legend>Dados da empresa</legend>
+                                        <legend class="center">Company data</legend>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">
                                                     <img src="../../resources/images/svg/si-glyph-suitcase-person.svg" style="width: 16px; height: 16px;" /> 
                                                 </span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Nome da empresa ou razão social"
+                                            <input type="text" class="form-control" placeholder="Company name"
                                                    required name="name" <?php
                                                    if ($edit) {
                                                        echo('value="' . $companyToEdit['name']) . '"';
@@ -113,7 +113,7 @@ require_once '../../components/navbar.php';
                                                     <img src="../../resources/images/svg/si-glyph-phone-number.svg" style="width: 16px; height: 16px;" /> 
                                                 </span>
                                             </div>
-                                            <input type="tel" class="form-control" placeholder="Telefone" name="phone"
+                                            <input type="tel" class="form-control" placeholder="Phone" name="phone"
                                                    mask="(00) 00000-0000" <?php
                                                    if ($edit) {
                                                        echo('value="' . $companyToEdit['phone']) . '"';
@@ -132,7 +132,7 @@ require_once '../../components/navbar.php';
                                             if ($edit) {
                                                 echo('value="' . $companyToEdit['foundationDate']) . '"';
                                             }
-                                            ?> placeholder="Data de fundação da empresa"
+                                            ?> placeholder="Company foundation date"
                                                    class="form-control" onfocus="(this.type = 'date')"  id="date" >
 
                                         </div>
@@ -145,7 +145,7 @@ require_once '../../components/navbar.php';
                                                     <img src="../../resources/images/svg/si-glyph-document-copy.svg" style="width: 16px; height: 16px;" /> 
                                                 </span>
                                             </div>
-                                            <input type="text"  name="description"  placeholder="Atividades da empresa"  value="<?php
+                                            <input type="text"  name="description"  placeholder="Company activities"  value="<?php
                                             if ($edit) {
                                                 echo($companyToEdit['description']);
                                             }
@@ -157,12 +157,12 @@ require_once '../../components/navbar.php';
 
                                     <input type="submit" style="background-color:#021f9a" value="<?php
                                     if (!$edit) {
-                                        echo('Criar Empresa');
+                                        echo('Create company');
                                     } else {
-                                        echo('Atualizar Informações');
+                                        echo('Update information');
                                     }
                                     ?>" class="btn btn-block btn-success" />
-                                    <a href="company.php" class="btn btn-primary form-control" style="margin-top: 5px; background-color: #39b4e8"> Nova empresa</a>
+                                    <a href="company.php" class="btn btn-primary form-control" style="margin-top: 5px; background-color: #39b4e8"> New Company</a>
                                 </form>
                             </div>
                         </div>
@@ -170,14 +170,14 @@ require_once '../../components/navbar.php';
                     <div class="col-md-6 container-color" style="padding:1%" >
                         <?php if ($showListOfCompanies) { ?>
                             <fieldset>
-                                <h3  class="header-titles alert alert-info">Suas Empresas</h3>
+                                <h3  class="header-titles alert alert-info">Your companies</h3>
 
 
-                                <table class="table table-hover table-bordered " style="text-align: center">
+                                <table class="table table-hover table-bordered " style="text-align: center; background-color: #fff">
                                     <tr>
-                                        <th>Nome / razão social</th>
-                                        <th>Descrição</th>
-                                        <th>Ações</th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
                                     </tr>
 
                                     <?php
@@ -186,7 +186,7 @@ require_once '../../components/navbar.php';
 
                                         <tr>
                                             <td><?= $mc['name'] ?></td>
-                                            <td><?= $mc['description'] ?></td>
+                                            <td style="width: 65%"><?= $mc['description'] ?></td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-md-4">
