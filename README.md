@@ -8,7 +8,7 @@ Knowledge Management (KM) is responsible for using the intellectual resources of
 ## Demo
 
 For more details and a demo of this running project access this video: 
-https://www.youtube.com/watch?v=yh_Ypdkq3pw&t
+[![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://www.youtube.com/watch?v=yh_Ypdkq3pw)
 
 
 ## Roadmap
