@@ -1,0 +1,80 @@
+
+Online community of practice (CoP) or knowledge sharing forum
+
+1. Number of members of CoP
+2. Number of contributions by type of content 
+3. Number of views of different types of contents 
+4. Distribution of members' participation (comment, don't comment and listeners
+5. Number of answers by discussion 
+6. Number of days before the first answer on a discussion 
+7. Number of members who engage discussions 
+8. Number of contributions from moderators 
+9. Number of (mutual) connections of access, exit, moderators and members of the CoP in the corporate social
+network 
+10. Number of discussions which broke down into other topics 
+11. Presence of target public who participated in the CoP setting procedures 
+12. Non-participation of the target public due to discontinuation or lack of setting of the CoP 
+13. Number of chats which had resulted in the portal 
+14. If a person has talked to someone who they had never talked before and who they probably would not have
+talked to if it were not for the community 
+15. Someone who has already worked out of the CoP with someone who met on the CoP 
+16. The person can give an example of what the community allows you to do 
+
+
+Knowledge product (KP)
+
+17. Number of KP created
+18. Percentage of users who classify KP as good, excellent, or useful
+19. Number of KP mentions
+20. Number of KP downloads
+21. Number of people who read a KP
+22. Percentage of readers who accessed a particular KP
+23. Number of people who acquire knowledge about their work and/or product policy through reading 
+24. Number of channels where a KP is available
+25. If there was knowledge acquired through discussions about the product 
+26. Number of KP reccommendations
+27. Useful for the knowledge product noticed by the target public
+28. Number of examples where work has been mentioned
+
+
+Organizational development of the KM capacity
+
+29. Percentage of people who feel encouraged to share knowledge with their co-workers 
+30. Percentage of people who believe they have time to transmit and receive knowledge "from" or "to" other
+people 
+31. Percentage of people who share knowledge with a co-worker from outside their team at least once a week 
+32. Percentage of people who believe knowledge is an essential organizational resource
+33. Percentage of people who agree they are encouraged, by the organization, to seek knowledge from coworkers
+34. Percentage of people who agree that if the need comes up for a specific piece of knowledge, the
+organization will offer an expert to help 
+35. Percentage of people who agree that they know exactly "who" in the organization has the specific
+knowledge to help them in their job 
+36. Percentage of people who agree that they can find the knowledge they need quickly and easily 
+37. Percentage of people who agree that organizational knowledge is useful and meets their needs when
+sought for in an organizational repository 
+38. Percentage of people who agree that organization's CoP improve and facilitate knowledge sharing 
+39. Percentage of people who agree that it is not so easy to share knowledge with co-workers from other teams
+as it is with the ones from their team 
+40. Percentage of people who are confident that all their knowledge created with potential value for future
+projects will be known, traceable and used after they have left the organization 
+41. Structures for teamwork and project which encourage people to present experiences and insights from
+other settings to shape their work 
+42. Encourage people from many perspectives and different points of view to emerge in the company 
+
+
+Participants’ perspectives about the research
+
+1. This set of indicators will help me with decision-making on my daily life?
+2. Do you think that KM is important to your organization?
+3. Do you think that KM is important to the project you are involved with?
+4. What is your understanding level regarding KM?
+5. Do you have any suggestion about those indicators? (e.g. add/replace/take out an indicator; comments; etc.)
+
+
+
+Extracted from:
+
+VALIDATING KNOWLEDGE CREATION INDICATORS FOR THE SOFTWARE INDUSTRY: A FIELD RESEARCH THROUGH A STRUCTURED QUESTIONNAIRE
+International Journal of Development Research
+Danieli Pinto
+2017
