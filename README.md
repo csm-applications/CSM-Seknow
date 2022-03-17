@@ -44,6 +44,4 @@ If you do not have the apache server installed, one option is to use XAMPP: http
 
 This project is OpenSource and still needs several contributions to make it a smart way to diagnose knowledge management. If you have identified issues that can be improved, leave them in the Issues section.
 
-You can still contact me through github or my website: http://www.computersciencemaster.com.br
-
 
