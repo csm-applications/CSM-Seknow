@@ -52,28 +52,39 @@ Seknow is a Springboot application, it means that it benefits from the whole Spr
   
 In source/main/resources/application.properties you will find a configuration file for database:
 
-~~~~~
-# = DATABASE
+```text
+`# = DATABASE
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring.datasource.url=jdbc:postgresql://localhost:5432/SeknowSE
 spring.datasource.username= postgres
 spring.datasource.password=12345
-
 # The SQL dialect makes Hibernate generate better SQL for the chosen database
 spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
-
 # Hibernate ddl auto (create, create-drop, validate, update)
 spring.jpa.hibernate.ddl-auto = update
-
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
-~~~~
+# default port
+server.port=8000
+```
   
 Make sure that your username and password are correct and save the file.
 
-## Step 04 - 
+## Step 04 - Running the application
   
+To run Seknow, you will need to run "GcEvalApplication.java" class which contains a main method that start the server. It is important to notice that all dependencies must be satisfied, hence, building the project will download all libraries automatically and after that the project will start. After running the project, take a look on database and check whether the following tables were created:
   
+<img src="https://user-images.githubusercontent.com/13739735/172916560-f2d8e67e-85ce-4121-b33b-92cf16df196c.png" width=200/>
 
-
-
+  
+## Step 05 - Populating the database for development
+  
+Seknow is almost ready to go... at this point, you already created the tables and services are running. However, you need to populate the database with basic informations like user type (e.g., support, database admin, programmer, designer), roles, user groups, permissions, dummy users, etc. 
+  
+> To facilitate this process the scripts are available [here](https://github.com/csm-applications/CSM-Seknow/tree/master/Database).
+  
+- Run ambient setup.sql // to insert basic data
+- Insert Diagnostic 01  // to insert a questionnaire
+- Insert Diagnostic 02  // to insert Bukowitz and Williams a questionnaire
+- Insert responses questionnaire 01 // to insert examples of answers
+- Insert responses questionnaire 02 // to insert another set of examples
 
