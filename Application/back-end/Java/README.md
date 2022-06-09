@@ -1,3 +1,12 @@
+# Seknow back-end overview
+
+This folder contains the available back-end from Seknow system:
+
+- SeknowSE → [click here](https://sol.sbc.org.br/index.php/cbsoft_estendido/article/view/7662)
+- GCEval → Legacy version of the system
+
+To run the Springboot version follow the tutorial below.
+
 # :sparkles: Getting Started
 
 In this quick tutorial, we summarize how to configure all the environment and run the back-end application. For this, there are few requirements that are mandatory:
