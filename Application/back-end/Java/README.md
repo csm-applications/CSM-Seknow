@@ -94,7 +94,8 @@ Finally you can test your application by calling in navigator the endpoint:
   > http://localhost:8000/api/users/
   
 The expected results is a json:
-  <img src="https://user-images.githubusercontent.com/13739735/172921449-5d41a2e5-78ec-4467-8456-486fb852f4a8.png" width=200/>
+  
+<img src="https://user-images.githubusercontent.com/13739735/172921449-5d41a2e5-78ec-4467-8456-486fb852f4a8.png" width=700/>
   
  
 
