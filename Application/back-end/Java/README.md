@@ -26,9 +26,7 @@ To contribute with this project use "fork". Otherwise, just download the zip and
 
 Seknow back-end was created using maven i.e., a dependency manager that support developers to easily deal with libraries [to know more... click here](https://maven.apache.org/). This means that you will need to import a maven-based project...
 
-Netbeans IDE             |  Eclipse
-:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/13739735/172901577-ee393b48-bf10-4245-99a3-4f2c648fabdf.png" width="200"/>|<img src="https://user-images.githubusercontent.com/13739735/172902471-c0722687-af2f-4ac0-8f9e-8554c98b436c.png" width="200"/>
+<img src="https://user-images.githubusercontent.com/13739735/172901577-ee393b48-bf10-4245-99a3-4f2c648fabdf.png" width="200"/>
 
 Locate in your file system the project folder:
 
@@ -36,9 +34,7 @@ Locate in your file system the project folder:
 
 The expected result is the following structure:
 
-Netbeans IDE             |  Eclipse
-:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/13739735/172906056-fb2baf3a-49bf-488d-8c05-803451b059e6.png" width="200"/>|<img src="" width="200"/>
+<img src="https://user-images.githubusercontent.com/13739735/172906056-fb2baf3a-49bf-488d-8c05-803451b059e6.png" width="200"/>
 
 ## Step 03 - Checking the database connection
 
