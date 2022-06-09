@@ -65,6 +65,7 @@ spring.jpa.hibernate.ddl-auto = update
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults = false
 # default port
 server.port=8000
+server.servlet.context-path=/api
 ```
   
 Make sure that your username and password are correct and save the file.
@@ -87,4 +88,15 @@ Seknow is almost ready to go... at this point, you already created the tables an
 - Insert Diagnostic 02  // to insert Bukowitz and Williams a questionnaire
 - Insert responses questionnaire 01 // to insert examples of answers
 - Insert responses questionnaire 02 // to insert another set of examples
+  
+Finally you can test your application by calling in navigator the endpoint:
+
+  > http://localhost:8000/api/users/
+  
+The expected results is a json:
+  <img src="https://user-images.githubusercontent.com/13739735/172921449-5d41a2e5-78ec-4467-8456-486fb852f4a8.png" width=200/>
+  
+ 
+
+
 
