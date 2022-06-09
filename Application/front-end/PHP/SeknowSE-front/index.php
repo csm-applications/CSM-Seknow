@@ -12,8 +12,8 @@ session_start();
 if (isset($_POST['email']) && isset($_POST['password'])) {
     session_destroy();
     session_start();
-    $toCompare = json_decode(CallAPI("GET", "http://localhost:8000/api/users/findbymail/" . $_POST['email']), true);
-    var_dump($toCompare);
+    $toCompare = json_decode(CallAPI("GET", "http://localhost:8000/api/users/findbyemail/" . $_POST['email']), true);
+    //var_dump($toCompare);
     if ($_POST['email'] == null || $_POST['password'] == null) {
         header("location: index.php?message=Inform the user and password");
     } else {
@@ -21,11 +21,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (isset($toCompare['email']) && $toCompare['password'] == $_POST['password']) {
             //var_dump($toCompare);
             $_SESSION['logged_user'] = $toCompare['email'];
-            $_SESSION['id_logged_user'] = $toCompare['id_user_account'];
-            $_SESSION['idCompany'] = $toCompare['id_company']['id_company'];
-            $_SESSION['user_type'] = $toCompare['user_type']['name'];
-            $_SESSION['grouping'] = $toCompare['Grouping']['name'];
-            if ($toCompare['user_type']['name'] == 'Manager') {
+            $_SESSION['id_logged_user'] = $toCompare['idUserAccount'];
+            $_SESSION['idCompany'] = $toCompare['companyId']['idCompany'];
+            $_SESSION['user_type'] = $toCompare['userType']['name'];
+            $_SESSION['grouping'] = $toCompare['grouping']['name'];
+            if ($toCompare['userType']['name'] == 'Manager') {
                 header("location: view/dashboards/manager.php");
             }else{
                 header("location: view/dashboards/user.php");
