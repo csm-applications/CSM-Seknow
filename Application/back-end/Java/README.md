@@ -97,7 +97,9 @@ The expected results is a json:
   
 <img src="https://user-images.githubusercontent.com/13739735/172921449-5d41a2e5-78ec-4467-8456-486fb852f4a8.png" width=700/>
   
- 
+# Conclusion
+
+Your application is now ready to receive requests from the front-end application.
 
 
 
