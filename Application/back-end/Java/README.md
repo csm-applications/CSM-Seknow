@@ -26,8 +26,8 @@ Okay, Lets get started.
 
 The first step to run this project is accessing the [repository home page](https://github.com/csm-applications/CSM-Seknow) and download this project. For this, there are two different ways: 
 
-1- Fork the project to your Github; 
-2- Click on the button "code" and next on "Download zip".
+1. Fork the project to your Github; 
+2. Click on the button "code" and next on "Download zip".
 
 To contribute with this project use "fork". Otherwise, just download the zip and move on.
 
