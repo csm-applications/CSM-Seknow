@@ -29,7 +29,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'provideDiagnostic') {
             echo("<div class='alert alert-danger'>" . $_GET['message'] . "</div>");
         }
 
-        $listOfCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies/" . $_SESSION['id_logged_user']), true);
+        $listOfCompanies = json_decode(CallAPI("GET", "http://localhost:8080/api/users/companies/" . $_SESSION['id_logged_user']), true);
         ?>
 
         <h3 class="header-titles alert">Provide Diagnostic</h3>

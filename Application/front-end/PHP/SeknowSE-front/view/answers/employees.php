@@ -7,7 +7,7 @@ require_once '../../API/CallAPI.php';
 ?>
 
 <?php
-$myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies/" . $_SESSION['id_logged_user']), true);
+$myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/api/users/companies/" . $_SESSION['id_logged_user']), true);
 ?>
 
 <body class="application-background" >
@@ -21,7 +21,7 @@ $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies
 
                     <h4 class="header-subtitles alert alert-dark"> <?= $company['name'] ?></h4>
                     <?php
-                    $employees = json_decode(CallAPI("GET", "http://localhost:8080/companies/employees/" . $company['idCompany']), true);
+                    $employees = json_decode(CallAPI("GET", "http://localhost:8080/api/companies/employees/" . $company['idCompany']), true);
                     if (empty($employees)) {
                         echo("<div class='alert alert-danger'>No employees assigned to this company</div>");
                     }
@@ -32,7 +32,7 @@ $myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/users/companies
                                 <img src="../../resources/images/svg/si-glyph-person.svg" width="24" height="24"/>
                                 <?= $employee['nome'] ?>
                             </h5>
-                            <?php $answerData = json_decode(CallAPI("GET", "http://localhost:8080/data/fromuser/" . $employee['idUserAccount']), true);
+                            <?php $answerData = json_decode(CallAPI("GET", "http://localhost:8080/api/data/fromuser/" . $employee['idUserAccount']), true);
                             ?>
                             <table class="table table-hover table-bordered" style="background-color: #fff;">
                                 <tr class="header-tables">

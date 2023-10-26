@@ -12,7 +12,7 @@ session_start();
 if (isset($_POST['email']) && isset($_POST['password'])) {
     session_destroy();
     session_start();
-    $toCompare = json_decode(CallAPI("GET", "http://localhost:8000/api/users/findbyemail/" . $_POST['email']), true);
+    $toCompare = json_decode(CallAPI("GET", "http://localhost:8080/api/users/findbyemail/" . $_POST['email']), true);
     //var_dump($toCompare);
     if ($_POST['email'] == null || $_POST['password'] == null) {
         header("location: index.php?message=Inform the user and password");

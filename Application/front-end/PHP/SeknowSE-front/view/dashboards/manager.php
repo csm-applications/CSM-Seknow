@@ -7,8 +7,8 @@ require_once '../../api/CallAPI.php';
 ?>
 
 <?php
-$diagnosticos = json_decode(CallAPI("GET", "http://localhost:8000/api/diagnostics"), true);
-$myCompanies = json_decode(CallAPI("GET", "http://localhost:8000/api/users/companies/" . $_SESSION['id_logged_user']), true);
+$diagnosticos = json_decode(CallAPI("GET", "http://localhost:8080/api/diagnostics"), true);
+$myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/api/users/companies/" . $_SESSION['id_logged_user']), true);
 $showListOfCompanies = true;
 
 if (isset($_POST['revokeAction']) && $_POST['revokeAction'] != null && $_POST['revokeAction'] == 'revoke') {
@@ -19,7 +19,7 @@ if (isset($_POST['revokeAction']) && $_POST['revokeAction'] != null && $_POST['r
     array_push($toRevoke, $diagnosticToRevoke);
     array_push($toRevoke, $companyToRevoke);
 
-    CallAPI("PUT", "http://localhost:8000/api/companies/revoke/", json_encode($toRevoke));
+    CallAPI("PUT", "http://localhost:8080/api/companies/revoke/", json_encode($toRevoke));
 
     header("Location: ../dashboards/manager.php");
 }

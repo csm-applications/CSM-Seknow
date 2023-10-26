@@ -7,10 +7,10 @@ require_once '../../API/CallAPI.php';
 ?>
 
 <?php
-$answerData = json_decode(CallAPI("GET", "http://localhost:8080/data/fromuser/" . $_SESSION['id_logged_user']), true);
+$answerData = json_decode(CallAPI("GET", "http://localhost:8080/api/data/fromuser/" . $_SESSION['id_logged_user']), true);
 
 if (isset($_POST['action']) && $_POST['action'] == "deleteAnswer") {
-    json_decode(CallAPI("DELETE", "http://localhost:8080/data/" . $_POST['answerToDelete']), true);
+    json_decode(CallAPI("DELETE", "http://localhost:8080/api/data/" . $_POST['answerToDelete']), true);
     header("location: user.php");
 }
 ?>

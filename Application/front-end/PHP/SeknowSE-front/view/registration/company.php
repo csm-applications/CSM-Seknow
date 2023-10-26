@@ -12,16 +12,16 @@ session_start();
 ?>
 
 <?php
-$myCompanies = json_decode(CallAPI("GET", "http://localhost:8000/api/users/companies/" . $_SESSION['id_logged_user']), true);
+$myCompanies = json_decode(CallAPI("GET", "http://localhost:8080/api/users/companies/" . $_SESSION['id_logged_user']), true);
 $showListOfCompanies = true;
 $edit = false;
 if (isset($_POST['action']) && $_POST['action'] == "deletecompany") {
-    json_decode(CallAPI("DELETE", "http://localhost:8000/api/companies/" . $_POST['companytodelete']), true);
+    json_decode(CallAPI("DELETE", "http://localhost:8080/api/companies/" . $_POST['companytodelete']), true);
     header("location: company.php");
 }
 
 if (isset($_GET['editcompany'])) {
-    $companyToEdit = json_decode(CallAPI("GET", "http://localhost:8000/api/companies/" . $_GET['editcompany']), true);
+    $companyToEdit = json_decode(CallAPI("GET", "http://localhost:8080/api/companies/" . $_GET['editcompany']), true);
     $edit = true;
 }
 
@@ -34,11 +34,11 @@ if (isset($_POST['action']) && $_POST['action'] == "editCompany") {
     $company->setDescription($_POST['description']);
 
     $owner = new UserAccount();
-    $owner = json_decode(CallAPI("GET", "http://localhost:8000/api/users/" . $_SESSION['id_logged_user']), true);
+    $owner = json_decode(CallAPI("GET", "http://localhost:8080/api/users/" . $_SESSION['id_logged_user']), true);
 
     $company->setOwner($owner);
 
-    $companyEdited = json_decode(CallAPI("PUT", "http://localhost:8000/api/companies/", json_encode($company), true));
+    $companyEdited = json_decode(CallAPI("PUT", "http://localhost:8080/api/companies/", json_encode($company), true));
     header("location: company.php");
 }
 
@@ -51,11 +51,11 @@ if (isset($_POST['action']) && $_POST['action'] == "addCompany") {
     $company->setDescription($_POST['description']);
 
     $owner = new UserAccount();
-    $owner = json_decode(CallAPI("GET", "http://localhost:8000/api/users/" . $_SESSION['id_logged_user']), true);
+    $owner = json_decode(CallAPI("GET", "http://localhost:8080/api/users/" . $_SESSION['id_logged_user']), true);
 
     $company->setOwner($owner);
 
-    $companySaved = json_decode(CallAPI("POST", "http://localhost:8000/api/companies/", json_encode($company)), true);
+    $companySaved = json_decode(CallAPI("POST", "http://localhost:8080/api/companies/", json_encode($company)), true);
     header("location: company.php");
 }
 

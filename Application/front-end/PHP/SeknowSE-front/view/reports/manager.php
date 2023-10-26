@@ -12,7 +12,7 @@ require_once '../../api/CallAPI.php';
         <h3 class="header-titles alert"> Manager Report </h3>
 
         <?php
-        $companiesFromUser = json_decode(CallAPI("GET", "http://localhost:8080/companies/fromuser/" . $_SESSION['id_logged_user']), true);
+        $companiesFromUser = json_decode(CallAPI("GET", "http://localhost:8080/api/companies/fromuser/" . $_SESSION['id_logged_user']), true);
         if ($companiesFromUser == null) {
             echo '<div class="alert alert-info">Unfortunately you do not have any registered companies or employees. Register a company and apply the questionnaires to access the diagnostics.</div>';
         } else {
@@ -66,7 +66,7 @@ require_once '../../api/CallAPI.php';
                                     <option>Select a company</option>
                                     <?php
                                     $nameOfCompany = "";
-                                    $companies = json_decode(CallAPI("GET", "http://localhost:8080/companies/fromuser/" . $_SESSION['id_logged_user']), true);
+                                    $companies = json_decode(CallAPI("GET", "http://localhost:8080/api/companies/fromuser/" . $_SESSION['id_logged_user']), true);
                                     foreach ($companies as $key => $c) {
                                         if (isset($_GET['company']) && $_GET['company'] == $c['idCompany']) {
                                             $nameOfCompany = $c['name'];
@@ -85,7 +85,7 @@ require_once '../../api/CallAPI.php';
 
                 <?php
                 if (isset($_GET['company'])) {
-                    $url = "http://localhost:8080/chart/fromcompany/" . $_GET['company'] . "/gender";
+                    $url = "http://localhost:8080/api/chart/fromcompany/" . $_GET['company'] . "/gender";
 
 
                     $dataToPieChart = json_decode(CallAPI("GET", $url), true);
@@ -144,7 +144,7 @@ require_once '../../api/CallAPI.php';
                 }
 
 
-                $dataToChart = json_decode(CallAPI("GET", "http://localhost:8080/chart/fromcompany/" . $_SESSION['id_logged_user']), true);
+                $dataToChart = json_decode(CallAPI("GET", "http://localhost:8080/api/chart/fromcompany/" . $_SESSION['id_logged_user']), true);
                 $dataTable = Array();
 
                 array_unshift($dataToChart['xLabel'], "Seções");
@@ -184,7 +184,7 @@ require_once '../../api/CallAPI.php';
 
                 <?php
                 if (isset($_GET['company'])) {
-                    $dataToChart2 = json_decode(CallAPI("GET", "http://localhost:8080/chart/fromcompany/" . $_GET['company']), true);
+                    $dataToChart2 = json_decode(CallAPI("GET", "http://localhost:8080/api/chart/fromcompany/" . $_GET['company']), true);
                 }
                 $dataTable2 = Array();
                 $dataOfChartIsEmpty = empty($dataToChart2['xLabel']);

@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GcEvalApplication {
+public class SeknowApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GcEvalApplication.class, args);
+        SpringApplication.run(SeknowApplication.class, args);
     }
 
 }
